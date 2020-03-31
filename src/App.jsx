@@ -4,17 +4,17 @@
  * @Author: pdc
  * @Date: 2020-03-31 13:57:50
  * @LastEditors: pdc
- * @LastEditTime: 2020-03-31 16:09:05
+ * @LastEditTime: 2020-03-31 16:20:58
  */
-import React from 'react';
+import React, { Component } from 'react';
 import '@/assets/css/global.css';
 
-function App() {
-  return (
-    <div className="App">
-      
+class App extends Component {
+  render() {
+    return <div className="App" >
+
     </div>
-  );
+  };
 }
 
 export default App;
