@@ -4,12 +4,12 @@
  * @Author: pdc
  * @Date: 2020-03-31 13:57:50
  * @LastEditors: pdc
- * @LastEditTime: 2020-03-31 16:21:30
+ * @LastEditTime: 2020-04-01 09:02:38
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App.jsx';
+import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
