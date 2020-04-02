@@ -4,13 +4,27 @@
  * @Author: pdc
  * @Date: 2020-03-31 15:48:09
  * @LastEditors: pdc
- * @LastEditTime: 2020-03-31 16:07:44
+ * @LastEditTime: 2020-04-01 10:44:48
  */
-const { override, fixBabelImports, addLessLoader, addWebpackPlugin, addWebpackAlias  } = require('customize-cra');
+const {
+  override,
+  fixBabelImports,
+  addLessLoader,
+  addWebpackPlugin,
+  addWebpackResolve,
+  addWebpackAlias
+} = require('customize-cra');
 const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 const path = require('path');
+const resolve = (dir) => path.join(__dirname, dir);
+const rewiredMap = () => config => {
+  config.devtool = config.mode === 'development' ? 'cheap-module-source-map' : false;
+  return config;
+};
+
 
 module.exports = override(
+  rewiredMap(),
   addWebpackPlugin(new AntdDayjsWebpackPlugin()),
   fixBabelImports('import', {
     libraryName: 'antd',
@@ -19,7 +33,15 @@ module.exports = override(
   }),
   addLessLoader({
     javascriptEnabled: true,
-    modifyVars: {}, // 此处修改主题色
+    modifyVars: {
+      '@layout-header-background': '#39393B',
+      '@menu-dark-submenu-bg': '#242424'
+    }, // 此处修改主题色 @
   }),
-  addWebpackAlias({'@': path.resolve('src')})
+  addWebpackResolve({
+    extensions: ['.js', '.jsx', '.json']
+  }),
+  addWebpackAlias({
+    '@': resolve('src')
+  })
 );

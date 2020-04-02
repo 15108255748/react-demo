@@ -1,12 +1,32 @@
 /* 重置全局样式 */
 @import './reset.css';
 
+/* 动画库 */
+@import './animation.css';
+
 /* 设置全局样式变量 */
-@react-text-color1: #303133;
-@react-text-color2: #fff;
-@react-text-color3: #9A999C;
-@react-bg1        : #39393B;
-@react-bg2        : #242424;
+@rc-text-color1 : #303133;
+@rc-text-color2 : #fff;
+@rc-text-color3 : #9A999C;
+@rc-bg1         : #393939;
+@rc-bg2         : #242424;
+@rc-icon-color1 : @rc-text-color3;
+@rc-icon-color2 : #F59C11;
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius   : 8px;
+  background-color: @rc-text-color3;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius   : 8px;
+  background-color: @rc-text-color3;
+}
+
 
 .App {
   width : 100%;
@@ -15,28 +35,75 @@
   .App-Box {
     height: 100vh;
 
-    .App-sider {
-     .system-title{
-       height: 60px;
-       line-height: 60px;
-       font-size: 24px;
-       color: @react-text-color2;
-       text-align: center;
-     }
-     .user{
-       height: 180px;
-       .user-icon{
-        height: 100px;
-        width: 120px;
-        margin: 40px 40px 0 40px;
-        text-align: center;
-       }
-     }
+    .App-header {
+      display: flex;
+      padding: 0;
+
+      .system-title {
+        width      : 200px;
+        height     : 64px;
+        line-height: 64px;
+        font-size  : 24px;
+        color      : @rc-text-color2;
+        cursor     : pointer;
+
+        @media (prefers-reduced-motion: no-preference) {
+          .App-logo {
+            position : relative;
+            top      : -4px;
+            width    : 64px;
+            animation: App-logo-spin infinite 5s linear;
+          }
+        }
+      }
     }
 
+
     .App-main {
-      .App-header {
-        
+      .App-sider {
+
+        .user {
+          max-height: 180px;
+          background: @rc-bg2;
+          padding   : 10px 0;
+
+          .user-icon {
+            display   : flex;
+            height    : 60px;
+            width     : 60px;
+            margin    : 0 auto;
+            text-align: center;
+            cursor: pointer;
+          }
+
+          .user-name {
+            height     : 40px;
+            line-height: 40px;
+            font-size  : 18px;
+            color      : @rc-text-color2;
+            text-align : center;
+          }
+
+          .user-action {
+            text-align: center;
+
+            .action-font {
+              margin   : 15px 8px;
+              color    : @rc-icon-color1;
+              font-size: 22px;
+              cursor   : pointer;
+
+              :hover {
+                color: #F59C11;
+              }
+            }
+          }
+        }
+
+        .sider-Menu {
+          height    : 74vh;
+          overflow-y: auto;
+        }
       }
     }
   }
